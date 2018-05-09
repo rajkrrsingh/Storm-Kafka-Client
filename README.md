@@ -3,11 +3,12 @@
     mvn clean package
 
 ### run on storm cluster ###
-    storm jar stormkafkaclient-0.0.1-snapshot.jar com.rajkrrsingh.test.KafkaSpoutTopology newKafkaSpout
+    storm jar /tmp/StormKafkaClient-0.0.1-SNAPSHOT.^Cr com.rajkrrsingh.test.KafkaSpoutTopology c421-node4.sandy.com:6667
+### to test produce some message to topics
 
-### to test produce some message to topic sampleinput
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list `hostname`:6667 --topic sampleinput
+    /usr/hdp/current/kafka-broker/bin/kafka-producer-perf-test.sh --broker-list c421-node4.sandy.com:6667 --messages 100 --initial-message-id 0001 --topics kafka-spout-test-1
 
-   1,discription,1000,100000,IND
+    /usr/hdp/current/kafka-broker/bin/kafka-producer-perf-test.sh --broker-list c421-node4.sandy.com:6667 --messages 100 --initial-message-id 0001 --topics kafka-spout-test-2
 
-   1,discription,1000,100000,IND
+    /usr/hdp/current/kafka-broker/bin/kafka-producer-perf-test.sh --broker-list c421-node4.sandy.com:6667 --messages 100 --initial-message-id 0001 --topics kafka-spout-test
+
